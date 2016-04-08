@@ -1,0 +1,15 @@
+{
+    "name": "symfony_validator",
+    "license": "proprietary",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "require": {
+        "php": ">=5.5.9",
+        "symfony/validator": "^3.0",
+        "symfony/dependency-injection": "^3.0"
+    }
+}
