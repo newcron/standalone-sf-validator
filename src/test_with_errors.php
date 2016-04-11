@@ -33,7 +33,21 @@ $ad
     ]);
 
 $validator  = $container->get('validator.builder')->getValidator();
-$violations = $validator->validate($ad);
+$violations = $validator->validate($ad, null, ['Default', 'UnauthorizedUser']);
+
+echo '>>>>>>>>>>> Testing general errors.' . PHP_EOL;
+
+if (count($violations) > 0) {
+    foreach ($violations as $violation) {
+        echo $violation->getPropertyPath() . ' => ' .  $violation->getMessage() . PHP_EOL;
+    }
+} else {
+    echo 'Ups!! This should not appear!' . PHP_EOL;
+}
+
+echo '>>>>>>>>>>> Testing group errors.' . PHP_EOL;
+
+$violations = $validator->validate($ad, null, ['Default', 'AuthorizedUser']);
 
 if (count($violations) > 0) {
     foreach ($violations as $violation) {

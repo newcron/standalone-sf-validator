@@ -27,7 +27,7 @@ $ad
     ]);
 
 $validator  = $container->get('validator.builder')->getValidator();
-$violations = $validator->validate($ad);
+$violations = $validator->validate($ad, null, ['Default', 'UnauthorizedUser']);
 
 if (count($violations) > 0) {
     echo 'Ups!! This should not appear!' . PHP_EOL;

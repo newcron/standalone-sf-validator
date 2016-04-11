@@ -77,8 +77,15 @@ class Ad
                 new Assert\Length(['min' => 5, 'max' => 100])
             ])
             ->addPropertyConstraints('email', [
-                new Assert\NotBlank(),
-                new Assert\Email()
+                new Assert\Blank([
+                    'groups' => ['AuthorizedUser']
+                ]),
+                new Assert\NotBlank([
+                    'groups' => ['UnauthorizedUser']
+                ]),
+                new Assert\Email([
+                    'groups' => ['UnauthorizedUser']
+                ])
             ])
             ->addPropertyConstraints('phone', [
                 new CustomAssert\Phone()
